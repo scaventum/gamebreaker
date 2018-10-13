@@ -8,6 +8,16 @@ use App\Carousel;
 class CarouselsController extends Controller
 {
     /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->head_icon = "<i class='far fa-images'></i>";
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -17,6 +27,7 @@ class CarouselsController extends Controller
         $data = array(
             "title" => "Carousels",
             "header" => "Carousels",
+            "head_icon" => $this->head_icon,
             "subheader" => "Maintain carousels content on Home page",
             "carousels" => Carousel::orderBy('position','asc')->paginate(10)
         );

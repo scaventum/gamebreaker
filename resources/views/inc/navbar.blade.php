@@ -19,10 +19,11 @@
                     Menu
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Profile</a>
-                        <a class="dropdown-item" href="#">Sign Out</a>
+                        <a class="dropdown-item" href="#"><i class="far fa-user"></i> Profile</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/carousels">Carousel</a>
+                        <a class="dropdown-item" href="/carousels"><i class="far fa-images"></i> Carousel</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
                     </div>
                 </li>
             </ul>
