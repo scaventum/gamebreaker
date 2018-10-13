@@ -15,17 +15,19 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
                     <li class="breadcrumb-item"><a href="/carousels">Carousels</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Create</li>
+                    <li class="breadcrumb-item"><a href="/carousels/{{$carousel->id}}">View - {{$carousel->id}}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Update - {{$carousel->id}}</li>
                 </ol>
             </nav>
 
-            {!! Form::open(['action' => 'CarouselsController@store','method' => 'POST']) !!}
+            {!! Form::open(['action' => ['CarouselsController@update', $carousel->id],'method' => 'POST']) !!}
+                @method('PUT')
                 <div class="form-group row">
                     <div class="col-md-4">
                         {{Form::label('caption', 'Caption')}}
                     </div>
                     <div class="col-md-8">
-                        {{Form::textarea('caption','',['class' => 'form-control','placeholder' => 'Caption','rows' => 1])}}
+                        {{Form::textarea('caption', $carousel->caption, ['class' => 'form-control','placeholder' => 'Caption','rows' => 1])}}
                     </div>
                 </div>
                 <div class="form-group row">
@@ -33,7 +35,7 @@
                         {{Form::label('subcaption', 'Subcaption')}}
                     </div>
                     <div class="col-md-8">
-                        {{Form::textarea('subcaption','',['class' => 'form-control html-editor','placeholder' => 'Subcaption','rows' => 2])}}
+                        {{Form::textarea('subcaption', $carousel->subcaption, ['class' => 'form-control html-editor','placeholder' => 'Subcaption','rows' => 2])}}
                     </div>
                 </div>
                 <div class="form-group row">

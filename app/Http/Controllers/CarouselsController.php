@@ -68,7 +68,7 @@ class CarouselsController extends Controller
         $carousel->subcaption = $request->input('subcaption');
         $carousel->img = '';
         $carousel->position = ($request->input('activity')==1?Carousel::max('position')+1:0);
-        $carousel->activity = ($request->input('activity')==1?1:0);
+        $carousel->activity = 0;
         $carousel->save();
         
         return redirect('/carousels')->with('success','Carousel is successfully created.');
@@ -83,6 +83,8 @@ class CarouselsController extends Controller
     public function show($id)
     {
         $carousel = Carousel::find($id);
+        if(!$carousel) return redirect('/carousels')->with('error','Request is invalid.');
+
         $data = array(
             "title" => "Carousel - ".$carousel->id,
             "header" => "Carousel - ".$carousel->id,
@@ -101,7 +103,17 @@ class CarouselsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $carousel = Carousel::find($id);
+        if(!$carousel) return redirect('/carousels')->with('error','Request is invalid.');
+        
+        $data = array(
+            "title" => "Carousel - ".$carousel->id,
+            "header" => "Carousel - ".$carousel->id,
+            "head_icon" => $this->head_icon,
+            "subheader" => "Maintain carousels content on Home page",
+            "carousel" => $carousel
+        );
+        return view('carousels.edit')->with($data);
     }
 
     /**
@@ -113,7 +125,19 @@ class CarouselsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $carousel = Carousel::find($id);
+        if(!$carousel) return redirect('/carousels')->with('error','Request is invalid.');
+
+        $this->validate($request, [
+            "caption" => "required",
+            "subcaption" => "required",
+        ]);
+
+        $carousel->caption = $request->input('caption');
+        $carousel->subcaption = $request->input('subcaption');
+        $carousel->save();
+        
+        return redirect('/carousels/'.$id)->with('success','Carousel is successfully updated.');
     }
 
     /**
@@ -123,6 +147,16 @@ class CarouselsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
+    {
+        $carousel = Carousel::find($id);
+        if(!$carousel) return redirect('/carousels')->with('error','Request is invalid.');
+        $carousel->delete();
+        
+        return redirect('/carousels')->with('success','Carousel is successfully deleted.');
+    }
+
+    //Sort, activate and deactivate
+    public function sort()
     {
         //
     }
