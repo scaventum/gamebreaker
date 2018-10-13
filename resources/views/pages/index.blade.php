@@ -7,12 +7,12 @@
 <div id="home-carousel" class="carousel slide">
         <ol class="carousel-indicators">
             @foreach($carousel['carousel_items'] as $carousel_item )
-            <li data-target="#home-carousel" data-slide-to="{{$carousel_item['position']}}" class="{{($carousel_item['position']==0?'active':'')}}"></li>
+            <li data-target="#home-carousel" data-slide-to="{{$carousel_item['position']-1}}" class="{{($carousel_item['position']-1==0?'active':'')}}"></li>
             @endforeach
         </ol>
         <div class="carousel-inner">
             @foreach($carousel['carousel_items'] as $carousel_item)
-                <div class="carousel-item {{($carousel_item['position']==0?'active':'')}}" style="background:url({{asset('img/carousel/'.$carousel_item['img'])}}) center center;background-size:cover;'>">
+                <div class="carousel-item {{($carousel_item['position']-1==0?'active':'')}}" style="background:url({{asset('img/carousel/'.$carousel_item['img'])}}) center center;background-size:cover;'>">
                     <div class="carousel-image" style="background:url({{asset('img/carousel/'.$carousel_item['img'])}}) center center;background-size:cover;'>"></div>
                     <div class="carousel-caption d-none d-md-block">
                         <div class="container">

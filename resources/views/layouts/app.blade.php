@@ -22,7 +22,18 @@
     </head>
     <body>
         @include('inc.navbar')
-        @yield('content')
+        @include('inc.messages')
+        <div class="content-wrapper">
+            @yield('content')
+        </div>
         @include('inc.footer')
+
+        <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+        <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
+        <script>
+            $('.html-editor').ckeditor(function(config){
+                config.height = 10; 
+            });
+        </script>
     </body>
 </html>

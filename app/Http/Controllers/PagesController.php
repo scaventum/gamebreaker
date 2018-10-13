@@ -8,7 +8,7 @@ use App\Carousel;
 class PagesController extends Controller
 {
     public function index(){
-        $carousels =  Carousel::orderBy('position','asc')->get();
+        $carousels =  Carousel::orderBy('position','asc')->where('activity',1)->get();
         $data = array(
             "title" => "Home",
             "carousel" => array(

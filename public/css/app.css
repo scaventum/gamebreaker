@@ -2,8 +2,16 @@
   background-color: #333;
 }
 
+a {
+  color: inherit;
+}
+
 nav {
   font-family: "Russo One", sans-serif;
+}
+
+nav .dropdown-menu i {
+  width: 20px;
 }
 
 .nav-margin {
@@ -40,11 +48,22 @@ section {
   border-radius: 10px 10px 0 0;
 }
 
+.page-header-admin .page-header-admin-title {
+  height: 36px;
+  line-height: 36px;
+  font-family: "Russo One", sans-serif;
+  font-size: 24px;
+}
+
+.content-wrapper {
+  width: 100%;
+  min-height: 100vh;
+}
+
 .content-admin {
   width: 100%;
   height: auto;
-  min-height: 100vh;
-  padding: 10px 10px 0 10px;
+  padding: 10px 10px 10px 10px;
   background-color: #fff;
   color: #333;
   border-radius: 0 0 10px 10px;
@@ -60,6 +79,10 @@ section {
 
 .content-admin .content-list {
   margin: 0 0 10px 0;
+}
+
+.content-admin .content-list:last-child {
+  margin: 0;
 }
 
 #home-carousel {

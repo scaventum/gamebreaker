@@ -29,7 +29,7 @@ class CarouselsController extends Controller
             "header" => "Carousels",
             "head_icon" => $this->head_icon,
             "subheader" => "Maintain carousels content on Home page",
-            "carousels" => Carousel::orderBy('position','asc')->paginate(10)
+            "carousels" => Carousel::orderBy('activity','desc')->orderBy('position', 'asc')->paginate(10)
         );
         return view('carousels.index')->with($data);
     }
@@ -41,7 +41,13 @@ class CarouselsController extends Controller
      */
     public function create()
     {
-        //
+        $data = array(
+            "title" => "Carousels - Create",
+            "header" => "Carousels - Create",
+            "head_icon" => $this->head_icon,
+            "subheader" => "Create carousels content on Home page"
+        );
+        return view('carousels.create')->with($data);
     }
 
     /**
@@ -52,7 +58,20 @@ class CarouselsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            "caption" => "required",
+            "subcaption" => "required",
+        ]);
+
+        $carousel = new Carousel();
+        $carousel->caption = $request->input('caption');
+        $carousel->subcaption = $request->input('subcaption');
+        $carousel->img = '';
+        $carousel->position = ($request->input('activity')==1?Carousel::max('position')+1:0);
+        $carousel->activity = ($request->input('activity')==1?1:0);
+        $carousel->save();
+        
+        return redirect('/carousels')->with('success','Carousel is successfully created.');
     }
 
     /**
@@ -67,6 +86,7 @@ class CarouselsController extends Controller
         $data = array(
             "title" => "Carousel - ".$carousel->id,
             "header" => "Carousel - ".$carousel->id,
+            "head_icon" => $this->head_icon,
             "subheader" => "Maintain carousels content on Home page",
             "carousel" => $carousel
         );
