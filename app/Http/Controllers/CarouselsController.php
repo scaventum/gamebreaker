@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Carousel;
+use App\User;
 
 class CarouselsController extends Controller
 {
@@ -24,12 +25,18 @@ class CarouselsController extends Controller
      */
     public function index()
     {
+        // $user_id = auth()->user()->id;
+        // $user = User::find($user_id);
+        // $carousels = $user->carousels()->orderBy('activity','desc')->orderBy('position', 'asc')->paginate(10);
+        
+        $carousels = Carousel::orderBy('activity','desc')->orderBy('position', 'asc')->paginate(10);
+
         $data = array(
             "title" => "Carousels",
             "header" => "Carousels",
             "head_icon" => $this->head_icon,
             "subheader" => "Maintain carousels content on Home page",
-            "carousels" => Carousel::orderBy('activity','desc')->orderBy('position', 'asc')->paginate(10)
+            "carousels" => $carousels
         );
         return view('carousels.index')->with($data);
     }
@@ -67,8 +74,9 @@ class CarouselsController extends Controller
         $carousel->caption = $request->input('caption');
         $carousel->subcaption = $request->input('subcaption');
         $carousel->img = '';
-        $carousel->position = ($request->input('activity')==1?Carousel::max('position')+1:0);
+        $carousel->position = 0;
         $carousel->activity = 0;
+        $carousel->user_id = auth()->user()->id;
         $carousel->save();
         
         return redirect('/carousels')->with('success','Carousel is successfully created.');

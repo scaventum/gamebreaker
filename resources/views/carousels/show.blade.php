@@ -42,7 +42,7 @@
                             </div>
                             <p>{!!$carousel->subcaption!!}</p>
                             <hr>
-                            <small>Last update at {{date("d M Y H:i:s",strtotime($carousel->updated_at))}}</small>
+                            <small>Last update by {{$carousel->user->name}} at {{date("d M Y H:i:s",strtotime($carousel->updated_at))}}</small>
                             
                         </div>
                     </div>
