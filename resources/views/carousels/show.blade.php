@@ -35,8 +35,8 @@
                                 <div class="col-sm-4 text-right">
                                     {!! Form::open(['action' => ['CarouselsController@destroy', $carousel->id],'method' => 'POST']) !!}
                                         @method('DELETE')
-                                        <a title="Update" href="/carousels/{{$carousel->id}}/edit" class="btn btn-secondary"><i class="far fa-edit"></i></a>
-                                        <button type="submit" class="btn btn-danger" title="Delete" onclick="return confirm('Delete data?')"><i class="fas fa-eraser"></i></button>
+                                        <a title="Update" href="/carousels/{{$carousel->id}}/edit" class="btn btn-secondary btn-sm"><i class="far fa-edit"></i></a>
+                                        <button type="submit" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm('Delete data?')"><i class="fas fa-eraser"></i></button>
                                     {!! Form::close() !!}
                                 </div>  
                             </div>
