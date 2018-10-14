@@ -7,6 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <link rel="icon" href="{{asset('storage/img/pages/favicon.png')}}" type="image/x-icon" />
     <title>{{config('app.name','GameBreaker')}} - {{(isset($title)?$title:"Home")}}</title>
 
     <!-- Font Awesome CSS -->
