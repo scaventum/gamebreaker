@@ -190,6 +190,8 @@ class CarouselsController extends Controller
         if($request->hasFile('img')){
             $carousel->img = $filenameFinal;
         }
+        $carousel->user_id = auth()->user()->id;
+        $carousel->updated_at = now();
         $carousel->save();
         
         return redirect('/carousels/'.$id)->with('success','Carousel is successfully updated.');

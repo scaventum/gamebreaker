@@ -92,7 +92,11 @@ section {
 #home-carousel .carousel-inner .carousel-item .carousel-image {
   height: 40vh;
   -webkit-filter: brightness(50%);
-          filter: brightness(50%);
+  filter: brightness(50%);
+}
+
+#home-carousel .carousel-inner .carousel-item .carousel-caption {
+  text-shadow: #000 0 0 25px;
 }
 
 .foot-margin {

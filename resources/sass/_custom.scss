@@ -87,7 +87,11 @@ section{
         .carousel-item{
             .carousel-image{
                 height: 40vh;
+                -webkit-filter: brightness(50%);
                 filter: brightness(50%);
+            }
+            .carousel-caption{
+                text-shadow: #000 0 0 25px;
             }
         }
     }
