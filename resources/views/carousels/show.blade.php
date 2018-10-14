@@ -22,7 +22,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-4">
-                            <img src="{{asset('img/carousel/'.$carousel->img)}}" class="img-fluid img-thumbnail">
+                            <img src="{{asset('storage/img/carousels/'.$carousel->img)}}" class="img-fluid img-thumbnail">
                         </div>
                         <div class="col-sm-8">
                             <div class="row">

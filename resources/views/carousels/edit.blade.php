@@ -20,7 +20,7 @@
                 </ol>
             </nav>
 
-            {!! Form::open(['action' => ['CarouselsController@update', $carousel->id],'method' => 'POST']) !!}
+            {!! Form::open(['action' => ['CarouselsController@update', $carousel->id],'method' => 'POST', 'files' => true]) !!}
                 @method('PUT')
                 <div class="form-group row">
                     <div class="col-md-4">

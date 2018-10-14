@@ -19,7 +19,7 @@
                 </ol>
             </nav>
 
-            {!! Form::open(['action' => 'CarouselsController@store','method' => 'POST']) !!}
+            {!! Form::open(['action' => 'CarouselsController@store','method' => 'POST', 'files' => true]) !!}
                 <div class="form-group row">
                     <div class="col-md-4">
                         {{Form::label('caption', 'Caption')}}

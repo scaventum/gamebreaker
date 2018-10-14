@@ -35,6 +35,8 @@
                                     </h5>
                                 </div>
                                 <div class="col-sm-4 text-right">
+                                    <!-- users can only manipulate the data they created -->
+                                    <!-- if(!Auth::guest() && Auth::user()->id == $carousel->user_id) -->
                                     {!! Form::open(['action' => ['CarouselsController@destroy', $carousel->id],'method' => 'POST']) !!}
                                         @method('DELETE')
                                         <a title="View" href="/carousels/{{$carousel->id}}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
