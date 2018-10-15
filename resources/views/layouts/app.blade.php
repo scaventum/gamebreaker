@@ -16,13 +16,21 @@
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     
-    <!-- Boostrap Core JS -->
+    <!-- JQuery JS -->
     <script src="https://code.jquery.com/jquery-3.1.0.js" ></script>
+    
+    <!-- Boostrap Core JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <!-- Custom JS -->
     <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
@@ -41,10 +49,13 @@
         <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
         <script>
             $(document).ready(function() {
+                AOS.init();
+
                 $('footer').find(".brand").click(function(){
                     $('html, body').animate({ scrollTop: 0 }, 600);
                     return false;
                 });
+                
                 $('.html-editor').ckeditor(function(config){
                     config.height = 10; 
                 });

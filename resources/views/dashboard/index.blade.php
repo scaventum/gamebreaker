@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" data-aos="fade-down">
     <div class="page-header-admin">
         <div class="row">
             <div class="col-sm-12">
