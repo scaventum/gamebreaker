@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="{{asset('storage/img/pages/logo.png')}}" width="25" height="25" class="d-inline-block" alt="">
+            <img src="{{asset('storage/img/pages/logo.png')}}" width="30" height="30" class="d-inline-block" alt="">
             Game<span class="text-danger">Breaker</span>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
