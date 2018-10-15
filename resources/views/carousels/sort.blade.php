@@ -48,7 +48,7 @@ $(document).ready(function() {
                 <div class="col-sm-6 form-group">
                     <div class="card bg-light">
                         <div class="card-header">
-                            <i class='fas fa-toggle-on text-danger'></i> Inactive
+                            <i class='fas fa-toggle-off text-danger'></i> Inactive
                         </div>
                         <div class="card-body">
                             <ol id="sortable2" class="connectedSortable list-group">

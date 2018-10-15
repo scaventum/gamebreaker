@@ -102,6 +102,11 @@ section {
   font-family: "Russo One", sans-serif;
 }
 
+.connectedSortable {
+  min-height: 100px;
+  width: 100%;
+}
+
 .connectedSortable li {
   font-family: "Russo One", sans-serif;
   color: #fff;
