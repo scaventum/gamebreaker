@@ -105,6 +105,7 @@ section {
 
 footer .brand {
   font-family: "Russo One", sans-serif;
+  cursor: pointer;
 }
 
 .navbar-laravel {
