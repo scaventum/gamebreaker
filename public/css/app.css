@@ -32,6 +32,7 @@ section {
 
 .page-header {
   color: #fff;
+  text-shadow: #000 0 0 10px, #000 0 0 10px;
 }
 
 .page-header-admin {
@@ -96,7 +97,7 @@ section {
 }
 
 #home-carousel .carousel-inner .carousel-item .carousel-caption {
-  text-shadow: #000 0 0 25px;
+  text-shadow: #000 0 0 10px, #000 0 0 10px;
 }
 
 .foot-margin {
