@@ -40,7 +40,7 @@ section {
   height: auto;
   margin: 50px auto 0 auto;
   padding: 10px;
-  background-color: #e3342f;
+  background-color: #dc3545;
   color: #fff;
   border-radius: 10px 10px 0 0;
 }
@@ -95,6 +95,17 @@ section {
 }
 
 #home-carousel .carousel-inner .carousel-item .carousel-caption {
+  text-shadow: #000 0 0 10px, #000 0 0 10px;
+}
+
+.card .card-header {
+  font-family: "Russo One", sans-serif;
+}
+
+.connectedSortable li {
+  font-family: "Russo One", sans-serif;
+  color: #fff;
+  cursor: pointer;
   text-shadow: #000 0 0 10px, #000 0 0 10px;
 }
 

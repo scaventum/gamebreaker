@@ -3,7 +3,7 @@
 $body-bg: #333;
 $white: #fff;
 $primary: #fff;
-$secondary: #e3342f;
+$secondary: #dc3545;
 $padding: 10px;
 
 $head-font: "Russo One", sans-serif;
@@ -93,6 +93,21 @@ section{
                 text-shadow: #000 0 0 10px, #000 0 0 10px;
             }
         }
+    }
+}
+
+.card{
+    .card-header{
+        font-family: $head-font; 
+    }
+}
+
+.connectedSortable{
+    li{
+        font-family: $head-font;
+        color:$white;
+        cursor: pointer;
+        text-shadow: #000 0 0 10px, #000 0 0 10px;
     }
 }
 

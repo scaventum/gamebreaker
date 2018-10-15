@@ -116,10 +116,10 @@ class CarouselsController extends Controller
         if(!$carousel) return redirect('/carousels')->with('error','Request is invalid.');
 
         $data = array(
-            "title" => "Carousel - ".$carousel->id,
-            "header" => "Carousel - ".$carousel->id,
+            "title" => "Carousel - View ".$carousel->id,
+            "header" => "Carousel - View ".$carousel->id,
             "head_icon" => $this->head_icon,
-            "subheader" => "Maintain carousels content on Home page",
+            "subheader" => "Show carousels content on Home page",
             "carousel" => $carousel
         );
         return view('carousels.show')->with($data);
@@ -141,10 +141,10 @@ class CarouselsController extends Controller
         //if($carousel->user_id != auth()->user()->id) return redirect('/carousels')->with('error','Request is invalid.');
         
         $data = array(
-            "title" => "Carousel - ".$carousel->id,
-            "header" => "Carousel - ".$carousel->id,
+            "title" => "Carousel - Update ".$carousel->id,
+            "header" => "Carousel - Update ".$carousel->id,
             "head_icon" => $this->head_icon,
-            "subheader" => "Maintain carousels content on Home page",
+            "subheader" => "Update carousels content on Home page",
             "carousel" => $carousel
         );
         return view('carousels.edit')->with($data);
@@ -219,6 +219,17 @@ class CarouselsController extends Controller
     //Sort, activate and deactivate
     public function sort()
     {
-        //
+        $carousels_active = Carousel::orderBy('position', 'asc')->where('activity', 1)->get();
+        $carousels_inactive = Carousel::orderBy('updated_at', 'desc')->where('activity', 0)->get();
+
+        $data = array(
+            "title" => "Carousels - Sort",
+            "header" => "Carousels - Sort",
+            "head_icon" => $this->head_icon,
+            "subheader" => "Sort carousels content on Home page",
+            "carousels_active" => $carousels_active,
+            "carousels_inactive" => $carousels_inactive
+        );
+        return view('carousels.sort')->with($data);
     }
 }
