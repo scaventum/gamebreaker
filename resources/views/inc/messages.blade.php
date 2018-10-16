@@ -1,10 +1,10 @@
 @if(count($errors) > 0 || session('success') || session('error'))
-    <div class="foot-margin"></div>
+    <div class="vertical-margin"></div>
 @endif
 
 @if(count($errors) > 0)
     @foreach($errors->all() as $error)
-        <div class="container">
+        <div class="container" data-aos="flip-down">
             <div class="alert alert-danger">
                 {{$error}}
             </div>
@@ -13,7 +13,7 @@
 @endif
 
 @if(session('success'))
-    <div class="container">
+    <div class="container" data-aos="flip-down">
         <div class="alert alert-success">
             {{session('success')}}
         </div>
@@ -21,7 +21,7 @@
 @endif
 
 @if(session('error'))
-    <div class="container">
+    <div class="container" data-aos="flip-down">
         <div class="alert alert-danger">
             {{session('error')}}
         </div>

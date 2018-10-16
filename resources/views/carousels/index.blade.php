@@ -8,8 +8,8 @@
                     <div class="page-header-admin-title" title="{{$subheader}}">{!!$head_icon!!} {{$header}}</div>
                 </div>
                 <div class="col-sm-4 text-right">
-                    <a href="/carousels/sort" class="btn btn-outline-light"><i class="fas fa-sort" title="Sort"></i></a>
-                    <a href="/carousels/create" class="btn btn-outline-light"><i class="fas fa-plus" title="Create"></i></a>
+                    <a href="/carousels/sort" class="btn btn-outline-light" title="Sort"><i class="fas fa-sort"></i></a>
+                    <a href="/carousels/create" class="btn btn-outline-light"title="Create"><i class="fas fa-plus"></i></a>
                 </div>
             </div>
         </div>

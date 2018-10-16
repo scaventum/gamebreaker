@@ -1,4 +1,4 @@
-<div class="foot-margin"></div>
+<div class="vertical-margin"></div>
 
 <footer class="page-footer font-small bg-dark text-light">
     <div class="footer-copyright text-center py-3">

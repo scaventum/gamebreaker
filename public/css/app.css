@@ -102,19 +102,19 @@ section {
   font-family: "Russo One", sans-serif;
 }
 
-.connectedSortable {
+.sortable_connected {
   min-height: 100px;
   width: 100%;
 }
 
-.connectedSortable li {
+.sortable_connected li {
   font-family: "Russo One", sans-serif;
   color: #fff;
   cursor: pointer;
   text-shadow: #000 0 0 10px, #000 0 0 10px;
 }
 
-.foot-margin {
+.vertical-margin {
   width: 100%;
   height: 50px;
 }

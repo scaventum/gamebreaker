@@ -217,8 +217,17 @@ class CarouselsController extends Controller
     }
 
     //Sort, activate and deactivate
-    public function sort()
+    public function sort(Request $request)
     {
+        if ($request->isMethod('post')) {
+            if($request->input('id_active')==NULL){
+                return redirect('/carousels/sort')->with('error','At least one [1] active carousel is required.');
+            }
+
+            //$carouselModel = new Carousel();
+            Carousel::sort($request);
+            return redirect('/carousels/sort')->with('success','Carousel is successfully sorted.');
+        }
         $carousels_active = Carousel::orderBy('position', 'asc')->where('activity', 1)->get();
         $carousels_inactive = Carousel::orderBy('updated_at', 'desc')->where('activity', 0)->get();
 

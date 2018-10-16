@@ -46,7 +46,7 @@
                         {{Form::file('img')}}
                     </div>
                 </div>
-                {{Form::submit('Save',['class' => 'btn btn-primary btn-block'])}}
+                <button id="sub_save" type="submit" name="sub_save" class="btn btn-primary btn-block"><i class="far fa-save"> </i> Save</button>
             {!! Form::close() !!}
         </div>
     </div>
