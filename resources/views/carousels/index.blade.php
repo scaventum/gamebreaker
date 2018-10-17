@@ -8,8 +8,10 @@
                     <div class="page-header-admin-title" title="{{$subheader}}">{!!$head_icon!!} {{$header}}</div>
                 </div>
                 <div class="col-sm-4 text-right">
-                    <a href="/carousels/sort" class="btn btn-outline-light" title="Sort"><i class="fas fa-sort"></i></a>
-                    <a href="/carousels/create" class="btn btn-outline-light"title="Create"><i class="fas fa-plus"></i></a>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <a href="/carousels/sort" class="btn btn-outline-light" title="Sort"><i class="fas fa-sort"></i></a>
+                        <a href="/carousels/create" class="btn btn-outline-light"title="Create"><i class="fas fa-plus"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -39,9 +41,13 @@
                                     <!-- if(!Auth::guest() && Auth::user()->id == $carousel->user_id) -->
                                     {!! Form::open(['action' => ['CarouselsController@destroy', $carousel->id],'method' => 'POST']) !!}
                                         @method('DELETE')
-                                        <a title="View" href="/carousels/{{$carousel->id}}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
-                                        <a title="Update" href="/carousels/{{$carousel->id}}/edit" class="btn btn-secondary btn-sm"><i class="far fa-edit"></i></a>
-                                        <button type="submit" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm('Delete data?')"><i class="fas fa-eraser"></i></button>
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <a title="View" href="/carousels/{{$carousel->id}}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
+                                            <a title="Update" href="/carousels/{{$carousel->id}}/edit" class="btn btn-secondary btn-sm"><i class="far fa-edit"></i></a>
+                                            @if(App\Carousel::is_delete($carousel->id))
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm('Delete data?')"><i class="fas fa-eraser"></i></button>
+                                            @endif
+                                        </div>
                                     {!! Form::close() !!}
                                 </div>
                             </div>

@@ -205,10 +205,18 @@ class CarouselsController extends Controller
      */
     public function destroy($id)
     {
+        $transaction=true;
+
         $carousel = Carousel::find($id);
-        if(!$carousel) return redirect('/carousels')->with('error','Request is invalid.');
+        $is_delete = Carousel::is_delete($id);
+
+        if(!$carousel) $transaction = false;
+        if(!$is_delete) $transaction = false;
+        
         //users can only manipulate the data they created
         //if($carousel->user_id != auth()->user()->id) return redirect('/carousels')->with('error','Request is invalid.');
+        
+        if(!$transaction) return redirect('/carousels')->with('error','Request is invalid.');
 
         Storage::delete('public/img/carousels/'.$carousel->img);
         $carousel->delete();

@@ -12,8 +12,7 @@ class Carousel extends Model
         return $this->belongsTo('App\User');
     }
 
-    public static function sort($request)
-    {
+    public static function sort($request){
         DB::beginTransaction();
 
         DB::table('carousels')
@@ -35,7 +34,25 @@ class Carousel extends Model
                     'updated_at' => now()
                 ]);
         }
-        //die();
+
         DB::commit();
+    }
+
+    public static function is_delete($id){
+        $result=true;
+
+        $carousel_active = Carousel::where([
+            'activity' => 1, 
+            'id' => $id
+        ])->get();
+        
+        // $carousel_active = DB::table('carousels')
+        //     ->where('id', $id)
+        //     ->where('activity', 1)->first(); 
+        if(count($carousel_active)>0){
+            $result=false;
+        }
+
+        return $result;
     }
 }
