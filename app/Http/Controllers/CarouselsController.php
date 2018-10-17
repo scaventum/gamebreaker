@@ -26,8 +26,9 @@ class CarouselsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $request->user()->authorizeRoles(['ADMIN']);
         // $user_id = auth()->user()->id;
         // $user = User::find($user_id);
         // $carousels = $user->carousels()->orderBy('activity','desc')->orderBy('position', 'asc')->paginate(10);
@@ -49,8 +50,9 @@ class CarouselsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        $request->user()->authorizeRoles(['ADMIN']);
         $data = array(
             "title" => "Carousels - Create",
             "header" => "Carousels - Create",
@@ -68,6 +70,7 @@ class CarouselsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->user()->authorizeRoles(['ADMIN']);
         $this->validate($request, [
             "caption" => "required",
             "subcaption" => "required",
@@ -110,8 +113,9 @@ class CarouselsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
+        $request->user()->authorizeRoles(['ADMIN']);
         $carousel = Carousel::find($id);
         if(!$carousel) return redirect('/carousels')->with('error','Request is invalid.');
 
@@ -131,8 +135,9 @@ class CarouselsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
+        $request->user()->authorizeRoles(['ADMIN']);
         $carousel = Carousel::find($id);
 
         if(!$carousel) return redirect('/carousels')->with('error','Request is invalid.');
@@ -159,6 +164,7 @@ class CarouselsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->user()->authorizeRoles(['ADMIN']);
         $carousel = Carousel::find($id);
         if(!$carousel) return redirect('/carousels')->with('error','Request is invalid.');
 
@@ -203,8 +209,9 @@ class CarouselsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
+        $request->user()->authorizeRoles(['ADMIN']);
         $transaction=true;
 
         $carousel = Carousel::find($id);
@@ -227,6 +234,7 @@ class CarouselsController extends Controller
     //Sort, activate and deactivate
     public function sort(Request $request)
     {
+        $request->user()->authorizeRoles(['ADMIN']);
         if ($request->isMethod('post')) {
             if($request->input('id_active')==NULL){
                 return redirect('/carousels/sort')->with('error','At least one [1] active carousel is required.');

@@ -37,13 +37,17 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                         </a> -->
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#"><i class="far fa-user"></i> Profile</a>
+                            <a class="dropdown-item" href="#"><i class="far fa-id-card"></i> Profile</a>
                             <a class="dropdown-item" href="/dashboard"><i class="fas fa-desktop"></i> Dashboard</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/carousels"><i class="far fa-images"></i> Carousel</a>
-                            <div class="dropdown-divider"></div>
-
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                            @if( Auth::user()->hasrole('ADMIN') )
+                                <a class="dropdown-item text-primary" href="/configuration"><i class="fas fa-cogs"></i> Configuration</a>
+                                <a class="dropdown-item text-primary" href="/users"><i class="far fa-user"></i> Users</a>
+                                <a class="dropdown-item text-primary" href="/carousels"><i class="far fa-images"></i> Carousels</a>
+                                <a class="dropdown-item text-primary" href="/games"><i class="fas fa-gamepad"></i> Games</a>
+                                <div class="dropdown-divider"></div>
+                            @endif
+                            <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                 <i class="fas fa-sign-out-alt"></i> {{ __('Sign Out') }}
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
