@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="icon" href="{{asset('storage/img/pages/favicon.png')}}" type="image/x-icon" />
-    <title>{{config('app.name','GameBreaker')}} - {{(isset($title)?$title:"Home")}}</title>
+    <title>{!! \App\Configuration::where("key","NAME")->first()->value !!} - {{(isset($title)?$title:"Home")}}</title>
 
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Carousel;
+use App\Configuration;
 
 class PagesController extends Controller
 {
@@ -22,9 +23,9 @@ class PagesController extends Controller
     public function games(){
         $data = array(
             "title" => "Games",
-            "header" => "All the Games in the World",
-            "subheader" => "From peaceful backyard to the depths of hell",
-            "img_header" => "games.png",
+            "header" => Configuration::where("key","GAMES_TITLE")->first()->value,
+            "subheader" => Configuration::where("key","GAMES_SUBTITLE")->first()->value,
+            "img_header" => Configuration::where("key","GAMES_IMG")->first()->value,
             "games" => array(
                 "DOTA 2",
                 "StarCraft 2",
@@ -37,9 +38,9 @@ class PagesController extends Controller
     public function about(){
         $data = array(
             "title" => "About",
-            "header" => "Starting from the Bottom ...",
-            "subheader" => "... and here we are",
-            "img_header" => "about.png"
+            "header" => Configuration::where("key","ABOUT_TITLE")->first()->value,
+            "subheader" => Configuration::where("key","ABOUT_SUBTITLE")->first()->value,
+            "img_header" => Configuration::where("key","ABOUT_IMG")->first()->value,
         );
         return view("pages.about")->with($data);
     }
