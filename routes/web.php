@@ -25,10 +25,11 @@ Route::get('/', 'PagesController@index');
 Route::get('/games', 'PagesController@games');
 Route::get('/about', 'PagesController@about');
 
+Route::get('/dashboard', 'DashboardController@index');
+Route::get('/configuration', 'ConfigurationController@index');
+
 Route::get('/carousels/sort','CarouselsController@sort')->name('carousels.sort');
 Route::post('/carousels/sort','CarouselsController@sort')->name('carousels.sort');
 Route::resource('carousels','CarouselsController');
 
 Auth::routes();
-
-Route::get('/dashboard', 'DashboardController@index');
