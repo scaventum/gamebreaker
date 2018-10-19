@@ -120,8 +120,8 @@ class CarouselsController extends Controller
         if(!$carousel) return redirect('/carousels')->with('error','Request is invalid.');
 
         $data = array(
-            "title" => "Carousel - View ".$carousel->id,
-            "header" => "Carousel - View ".$carousel->id,
+            "title" => "Carousels - View ".$carousel->id,
+            "header" => "Carousels - View ".$carousel->id,
             "head_icon" => $this->head_icon,
             "subheader" => "Show carousels content on Home page",
             "carousel" => $carousel
@@ -146,8 +146,8 @@ class CarouselsController extends Controller
         //if($carousel->user_id != auth()->user()->id) return redirect('/carousels')->with('error','Request is invalid.');
         
         $data = array(
-            "title" => "Carousel - Update ".$carousel->id,
-            "header" => "Carousel - Update ".$carousel->id,
+            "title" => "Carousels - Update ".$carousel->id,
+            "header" => "Carousels - Update ".$carousel->id,
             "head_icon" => $this->head_icon,
             "subheader" => "Update carousels content on Home page",
             "carousel" => $carousel
