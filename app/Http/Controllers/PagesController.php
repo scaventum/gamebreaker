@@ -23,9 +23,9 @@ class PagesController extends Controller
     public function games(){
         $data = array(
             "title" => "Games",
-            "header" => Configuration::where("key","GAMES_TITLE")->first()->value,
-            "subheader" => Configuration::where("key","GAMES_SUBTITLE")->first()->value,
-            "img_header" => Configuration::where("key","GAMES_IMG")->first()->value,
+            "header" => Configuration::find(1)->games_title,
+            "subheader" => Configuration::find(1)->games_subtitle,
+            "img_header" => "games.png",
             "games" => array(
                 "DOTA 2",
                 "StarCraft 2",
@@ -38,9 +38,9 @@ class PagesController extends Controller
     public function about(){
         $data = array(
             "title" => "About",
-            "header" => Configuration::where("key","ABOUT_TITLE")->first()->value,
-            "subheader" => Configuration::where("key","ABOUT_SUBTITLE")->first()->value,
-            "img_header" => Configuration::where("key","ABOUT_IMG")->first()->value,
+            "header" => Configuration::find(1)->about_title,
+            "subheader" => Configuration::find(1)->about_subtitle,
+            "img_header" => "about.png",
         );
         return view("pages.about")->with($data);
     }

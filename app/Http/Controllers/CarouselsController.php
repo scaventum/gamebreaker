@@ -170,7 +170,8 @@ class CarouselsController extends Controller
 
         $this->validate($request, [
             "caption" => "required",
-            "subcaption" => "required"
+            "subcaption" => "required",
+            "img" => "image|max:1999|nullable"
         ]);
 
         if($request->hasFile('img')){

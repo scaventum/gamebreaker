@@ -2,7 +2,7 @@
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             <img src="{{asset('storage/img/pages/logo.png')}}" width="30" height="30" class="d-inline-block" alt="">
-            {!! \App\Configuration::where("key","BRAND")->first()->value !!}<!-- Game<span class="text-danger">Breaker</span> -->
+            {!! \App\Configuration::find(1)->brand !!}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>

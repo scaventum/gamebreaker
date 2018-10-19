@@ -19,6 +19,104 @@
         </nav>
 
         <div class="card-body">
+            {!! Form::open(['action' => ['ConfigurationController@index'],'method' => 'POST', 'files' => true]) !!}
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        {{Form::label('name', 'Name')}}
+                    </div>
+                    <div class="col-md-8">
+                        {{Form::text('name', $configuration->name, ['class' => 'form-control','placeholder' => 'Name'])}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        {{Form::label('brand', 'Brand')}}
+                    </div>
+                    <div class="col-md-8">
+                        {{Form::text('brand', $configuration->brand, ['class' => 'form-control','placeholder' => 'Brand'])}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        {{Form::label('logo', 'Logo')}}
+                    </div>
+                    <div class="col-md-8">
+                        {{Form::file('logo')}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        {{Form::label('favicon', 'Favicon')}}
+                    </div>
+                    <div class="col-md-8">
+                        {{Form::file('favicon')}}
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        {{Form::label('about_title', 'About Title')}}
+                    </div>
+                    <div class="col-md-8">
+                        {{Form::text('about_title', $configuration->about_title, ['class' => 'form-control','placeholder' => 'About Title'])}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        {{Form::label('about_subtitle', 'About Subtitle')}}
+                    </div>
+                    <div class="col-md-8">
+                        {{Form::text('about_subtitle', $configuration->about_subtitle, ['class' => 'form-control','placeholder' => 'About Subtitle'])}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        {{Form::label('about_img', 'About Image')}}
+                    </div>
+                    <div class="col-md-8">
+                        {{Form::file('about_img')}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        {{Form::label('about_content', 'About Content')}}
+                    </div>
+                    <div class="col-md-8">
+                        {{Form::textarea('about_content', $configuration->about_content, ['class' => 'form-control','placeholder' => 'About Content','rows' => 2])}}
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        {{Form::label('games_title', 'Games Title')}}
+                    </div>
+                    <div class="col-md-8">
+                        {{Form::text('games_title', $configuration->games_title, ['class' => 'form-control','placeholder' => 'Games Title'])}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        {{Form::label('games_subtitle', 'Games Subtitle')}}
+                    </div>
+                    <div class="col-md-8">
+                        {{Form::text('games_subtitle', $configuration->games_subtitle, ['class' => 'form-control','placeholder' => 'Games Subtitle'])}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        {{Form::label('games_img', 'Games Image')}}
+                    </div>
+                    <div class="col-md-8">
+                        {{Form::file('games_img')}}
+                    </div>
+                </div>
+
+                <button id="sub_save" type="submit" name="sub_save" class="btn btn-primary btn-block"><i class="far fa-save"> </i> Save</button>
+            {!! Form::close() !!}
             
         </div>
     </div>
