@@ -74,6 +74,7 @@ class ConfigurationController extends Controller
             $configuration->games_title = $request->input('games_title');
             $configuration->games_subtitle = $request->input('games_subtitle');
             $configuration->updated_at = now();
+            $configuration->user_id = auth()->user()->id;
             $configuration->save();
 
             return redirect('/configuration')->with('success','Configuration is successfully updated.');
