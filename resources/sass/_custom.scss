@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Russo+One');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
 $body-bg: #333;
 $white: #fff;
@@ -7,9 +8,11 @@ $secondary: #dc3545;
 $padding: 10px;
 
 $head-font: "Russo One", sans-serif;
+$body-font: "Ubuntu", sans-serif;
 
 body{
     background-color: $body-bg;
+    font-family: $body-font; 
 }
 
 nav{
@@ -61,6 +64,12 @@ section{
 .content-wrapper{
     width: 100%;
     min-height: 100vh;
+}
+
+.content{
+    .container{
+        color: $white !important;
+    }
 }
 
 .content-admin{

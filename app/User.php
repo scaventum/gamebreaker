@@ -65,4 +65,8 @@ class User extends Authenticatable
     public function carousels(){
         return $this->hasMany('App\Carousel');
     }
+
+    public function games(){
+        return $this->hasMany('App\Games');
+    }
 }

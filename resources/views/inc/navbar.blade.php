@@ -10,7 +10,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item {{ Request::is('games') ? 'active' : '' }}">
-                    <a class="nav-link " href="/games">Games</a>
+                    <a class="nav-link " href="/games-page">Games</a>
                 </li>
                 <li class="nav-item {{ Request::is('about') ? 'active' : '' }}">
                     <a class="nav-link " href="/about">About</a>

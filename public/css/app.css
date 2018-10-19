@@ -1,5 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css?family=Russo+One);body {
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css?family=Russo+One);@import url(https://fonts.googleapis.com/css?family=Ubuntu);body {
   background-color: #333;
+  font-family: "Ubuntu", sans-serif;
 }
 
 nav {
@@ -55,6 +56,10 @@ section {
 .content-wrapper {
   width: 100%;
   min-height: 100vh;
+}
+
+.content .container {
+  color: #fff !important;
 }
 
 .content-admin {

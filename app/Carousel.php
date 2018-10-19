@@ -46,9 +46,6 @@ class Carousel extends Model
             'id' => $id
         ])->get();
         
-        // $carousel_active = DB::table('carousels')
-        //     ->where('id', $id)
-        //     ->where('activity', 1)->first(); 
         if(count($carousel_active)>0){
             $result=false;
         }

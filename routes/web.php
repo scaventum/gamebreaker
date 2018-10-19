@@ -22,7 +22,7 @@ Route::get('/', function () {
 */
 
 Route::get('/', 'PagesController@index');
-Route::get('/games', 'PagesController@games');
+Route::get('/games-page', 'PagesController@games');
 Route::get('/about', 'PagesController@about');
 
 Route::get('/dashboard', 'DashboardController@index');
@@ -33,5 +33,7 @@ Route::post('/configuration', 'ConfigurationController@index');
 Route::get('/carousels/sort','CarouselsController@sort')->name('carousels.sort');
 Route::post('/carousels/sort','CarouselsController@sort')->name('carousels.sort');
 Route::resource('carousels','CarouselsController');
+
+Route::resource('games','GamesController');
 
 Auth::routes();

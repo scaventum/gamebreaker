@@ -41,6 +41,7 @@ class PagesController extends Controller
             "header" => Configuration::find(1)->about_title,
             "subheader" => Configuration::find(1)->about_subtitle,
             "img_header" => "about.png",
+            "content" => Configuration::find(1)->about_content
         );
         return view("pages.about")->with($data);
     }

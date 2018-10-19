@@ -84,7 +84,7 @@
                         {{Form::label('about_content', 'About Content')}}
                     </div>
                     <div class="col-md-8">
-                        {{Form::textarea('about_content', $configuration->about_content, ['class' => 'form-control','placeholder' => 'About Content','rows' => 2])}}
+                        {{Form::textarea('about_content', $configuration->about_content, ['class' => 'form-control html-editor','placeholder' => 'About Content','rows' => 2])}}
                     </div>
                 </div>
 
