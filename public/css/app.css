@@ -59,7 +59,27 @@ section {
 }
 
 .content .container {
-  color: #fff !important;
+  color: #fff;
+}
+
+.page-content-list {
+  width: 100%;
+  height: auto;
+  margin: 0 0 20px 0;
+  color: #fff;
+}
+
+.page-content-list .image {
+  height: 250px;
+}
+
+.page-content-list .description {
+  background: -webkit-gradient(linear, left top, left bottom, from(#111), color-stop(20%, #222), color-stop(40%, #111));
+  background: linear-gradient(#111, #222 20%, #111 40%);
+}
+
+.page-content-list:last-child {
+  margin: 0 0 0 0;
 }
 
 .content-admin {

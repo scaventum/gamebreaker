@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Carousel;
+use App\Game;
 use App\Configuration;
 
 class PagesController extends Controller
@@ -21,16 +22,13 @@ class PagesController extends Controller
     }
 
     public function games(){
+        $games =  Game::orderBy('name','asc')->where('activity',1)->get();
         $data = array(
             "title" => "Games",
             "header" => Configuration::find(1)->games_title,
             "subheader" => Configuration::find(1)->games_subtitle,
             "img_header" => "games.png",
-            "games" => array(
-                "DOTA 2",
-                "StarCraft 2",
-                "Counter Strike: Global Offensive"
-            )
+            "games" => $games
         );
         return view("pages.games")->with($data);
     }
