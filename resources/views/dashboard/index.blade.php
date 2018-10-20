@@ -17,15 +17,24 @@
             </ol>
         </nav>
 
-        <div class="card-body">
-            @if (session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
-                </div>
-            @endif
+        @if( Auth::user()->hasrole('ADMIN') )
+            <div class="btn-group bm-3 d-none d-sm-flex">
+                <button type="button" class="btn btn-primary"><i class="fab fa-teamspeak"></i></button>
+                <a href="/configuration" role="button" class="btn btn-outline-primary"><i class="fas fa-cogs"></i> Configuration</a>
+                <a href="/users" role="button" class="btn btn-outline-primary"><i class="far fa-user"></i> Users</a>
+                <a href="/carousels" role="button" class="btn btn-outline-primary"><i class="far fa-images"></i> Carousels</a>
+                <a href="/games" role="button" class="btn btn-outline-primary"><i class="fas fa-gamepad"></i> Games</a>
+            </div>
+            
+            <div class="btn-group-vertical bm-3 d-sm-none btn-block">
+                <button type="button" class="btn btn-primary"><i class="fab fa-teamspeak"></i> Administration</button>
+                <a href="/configuration" role="button" class="btn btn-outline-primary"><i class="fas fa-cogs"></i> Configuration</a>
+                <a href="/users" role="button" class="btn btn-outline-primary"><i class="far fa-user"></i> Users</a>
+                <a href="/carousels" role="button" class="btn btn-outline-primary"><i class="far fa-images"></i> Carousels</a>
+                <a href="/games" role="button" class="btn btn-outline-primary"><i class="fas fa-gamepad"></i> Games</a>
+            </div>
+        @endif
 
-            You are logged in!
-        </div>
     </div>
 </div>
 @endsection

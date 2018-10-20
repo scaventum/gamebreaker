@@ -19,6 +19,9 @@
     <!-- AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     
@@ -32,6 +35,10 @@
 
     <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- DataTables JS -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
 
     <!-- Custom JS -->
     <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->

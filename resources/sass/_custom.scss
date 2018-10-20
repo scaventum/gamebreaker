@@ -19,6 +19,10 @@ body{
     font-family: $body-font; 
 }
 
+.btn{
+    font-family: $head-font;
+}
+
 nav{
     font-family: $head-font; 
     .dropdown-menu{
