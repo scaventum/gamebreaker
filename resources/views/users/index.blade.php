@@ -4,8 +4,21 @@
 
     <script>
         $(document).ready( function () {
-            $('#table_user').DataTable({
-                "scrollX": true
+
+            var table_user = $('#table_user').DataTable( {
+                "scrollX": true,
+                "order": [[ 0, 'asc' ]],
+                "pageLength": 10,
+                "ajax": "/users/select_users",
+                "columns": [
+                    { "data": "id" },
+                    { "data": "name" },
+                    { "data": "email" },
+                    { "data": "role" }
+                ],
+                "columnDefs": [
+                    { "orderable": false, "targets": 3 }
+                ]
             });
         });
     </script>
@@ -38,26 +51,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($users as $user)
-                        <tr>
-                            <td>{{$user->id}}</td>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->email}}</td>
-                            <td>
-                                @if($user->roles[0]->id!=1)
-                                <select id="role_id" name="role_id" class="form-control">
-                                    @foreach($roles as $role)
-                                        <option value="{{$role->id}}" {{($user->roles[0]->id==$role->id?"selected":"")}}>
-                                            {{$role->name}}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @else
-                                    {{$user->roles[0]->name}}
-                                @endif
-                            </td>
-                        </tr>
-                    @endforeach
                 </tbody>
             </table>
             @endif
