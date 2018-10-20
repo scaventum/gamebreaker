@@ -31,8 +31,8 @@ Route::get('/configuration', 'ConfigurationController@index');
 Route::post('/configuration', 'ConfigurationController@index');
 
 Route::get('/users', 'UsersController@index');
-Route::post('/users/select_users', 'UsersController@select_users');
 Route::get('/users/select_users', 'UsersController@select_users');
+Route::post('/users/update_role', 'UsersController@update_role');
 
 Route::get('/carousels/sort','CarouselsController@sort')->name('carousels.sort');
 Route::post('/carousels/sort','CarouselsController@sort')->name('carousels.sort');

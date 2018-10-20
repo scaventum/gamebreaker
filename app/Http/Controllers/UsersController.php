@@ -43,13 +43,11 @@ class UsersController extends Controller
         return view('users.index')->with($data);
     }
 
-    /**
-     * Display a listing of the resource from ajax.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // Display a listing of the users from ajax.
     public function select_users(Request $request)
     {
+        $request->user()->authorizeRoles(['ADMIN']);
+
         $users = User::all();
         $roles = Role::all();
         
@@ -57,7 +55,7 @@ class UsersController extends Controller
 
             $role = "";
             if($value->roles[0]->id!=1){
-                $role = ' <select id="role_id" name="role_id" class="form-control">';
+                $role = ' <select id="role_id" name="role_id" class="form-control" data-id="'.$value->id.'">';
                 foreach($roles as $value_role){
                     $role .= ' <option value="'.$value_role->id.'" '.($value->roles[0]->id==$value_role->id?"selected":"").'>'.$value_role->name.'</option>';
                 }
@@ -69,5 +67,19 @@ class UsersController extends Controller
         }
 
         echo(json_encode(array("data"=>$users)));
+    }
+
+    //update role of the user from ajax.
+    public function update_role(Request $request)
+    {
+        $request->user()->authorizeRoles(['ADMIN']);
+
+        if ($request->isMethod('post')) {
+
+            Role::update_role($request);
+            return response()->json(['success'=>'Successfully updated the role of user #'.$request->input('id').'.']);
+        }
+                
+        return response()->json(['error'=>'Request is invalid.']);
     }
 }

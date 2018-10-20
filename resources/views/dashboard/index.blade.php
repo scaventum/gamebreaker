@@ -18,7 +18,7 @@
         </nav>
 
         @if( Auth::user()->hasrole('ADMIN') )
-            <div class="btn-group bm-3 d-none d-sm-flex">
+            <div class="btn-group bm-3 d-none d-md-flex">
                 <button type="button" class="btn btn-primary"><i class="fab fa-teamspeak"></i></button>
                 <a href="/configuration" role="button" class="btn btn-outline-primary"><i class="fas fa-cogs"></i> Configuration</a>
                 <a href="/users" role="button" class="btn btn-outline-primary"><i class="far fa-user"></i> Users</a>
@@ -26,7 +26,7 @@
                 <a href="/games" role="button" class="btn btn-outline-primary"><i class="fas fa-gamepad"></i> Games</a>
             </div>
             
-            <div class="btn-group-vertical bm-3 d-sm-none btn-block">
+            <div class="btn-group-vertical bm-3 d-md-none btn-block">
                 <button type="button" class="btn btn-primary"><i class="fab fa-teamspeak"></i> Administration</button>
                 <a href="/configuration" role="button" class="btn btn-outline-primary"><i class="fas fa-cogs"></i> Configuration</a>
                 <a href="/users" role="button" class="btn btn-outline-primary"><i class="far fa-user"></i> Users</a>

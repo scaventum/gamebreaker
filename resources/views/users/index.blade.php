@@ -20,6 +20,37 @@
                     { "orderable": false, "targets": 3 }
                 ]
             });
+
+            $('#table_user').on('change', 'select[name="role_id"]', function() {
+                var id = $(this).attr('data-id');
+                var role_id = $(this).val();
+                if(confirm("Change role of user #"+id+"?"))
+                {
+                    $("#loading").show();
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: "POST",
+                        url: "users/update_role",
+                        data:{
+                            id:id,
+                            role_id:role_id
+                        },
+
+                        success: function(response) {
+                            if($.isEmptyObject(response.error)){
+                                table_user.ajax.reload(null,false);
+                                alert(response.success);
+                            }else{
+                                alert(response.error);
+                            }
+                        }
+                    });
+                    $("#loading").hide(); 
+                }
+            });
+
         });
     </script>
 
