@@ -77,6 +77,16 @@ section{
 .content{
     .container{
         color: $white;
+        .post-content{
+            background: linear-gradient($dark, $dark-grey 20%, $dark 40%);
+            padding: $padding;
+        }
+
+        .post-filter{
+            background: linear-gradient($dark, $dark-grey 20%, $dark 40%);
+            padding: $padding;
+            height: 100%;
+        }
     }
 }
 

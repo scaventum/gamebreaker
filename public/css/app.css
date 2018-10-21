@@ -66,6 +66,19 @@ section {
   color: #fff;
 }
 
+.content .container .post-content {
+  background: -webkit-gradient(linear, left top, left bottom, from(#111), color-stop(20%, #222), color-stop(40%, #111));
+  background: linear-gradient(#111, #222 20%, #111 40%);
+  padding: 10px;
+}
+
+.content .container .post-filter {
+  background: -webkit-gradient(linear, left top, left bottom, from(#111), color-stop(20%, #222), color-stop(40%, #111));
+  background: linear-gradient(#111, #222 20%, #111 40%);
+  padding: 10px;
+  height: 100%;
+}
+
 .page-content-list {
   width: 100%;
   height: auto;

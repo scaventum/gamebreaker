@@ -2,7 +2,7 @@
 
 @section('content')
     @include('inc.header')
-    <section>
+    <section class="content">
         <div class="container">
             @if(count($games)>0)
                 @foreach($games as $game)

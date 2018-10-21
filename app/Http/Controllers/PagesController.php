@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
 use App\Carousel;
 use App\Game;
 use App\Configuration;
@@ -11,8 +12,10 @@ class PagesController extends Controller
 {
     public function index(){
         $carousels =  Carousel::orderBy('position','asc')->where('activity',1)->get();
+        $posts =  Post::orderBy('updated_at','asc')->paginate(8);
         $data = array(
             "title" => "Home",
+            "posts" => $posts,
             "carousel" => array(
                 "interval" => 3000,
                 "carousel_items" => $carousels

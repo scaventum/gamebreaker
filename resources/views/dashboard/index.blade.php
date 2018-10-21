@@ -41,41 +41,41 @@
         @endif
 
         @if(count($posts)>0)
-                {{$posts->links()}}
-                @foreach($posts as $post)
-                    <div class="card content-list bg-light">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-8">
-                                    <h5 class="card-title">
-                                        <a href="/dashboard/{{$post->id}}">
-                                            <img src="{{asset('storage/img/games/'.$post->game->id.'/'.$post->game->logo)}}" height="30" class="d-inline-block" alt="">
-                                            {{strip_tags($post->title)}}
-                                        </a>
-                                    </h5>
-                                </div>
-                                <div class="col-sm-4 text-right">
-                                    <!-- users can only manipulate the data they created -->
-                                    <!-- if(!Auth::guest() && Auth::user()->id == $carousel->user_id) -->
-                                    {!! Form::open(['action' => ['DashboardController@destroy', $post->id],'method' => 'POST']) !!}
-                                        @method('DELETE')
-                                        <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a title="View" href="/dashboard/{{$post->id}}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
-                                            <a title="Update" href="/dashboard/{{$post->id}}/edit" class="btn btn-secondary btn-sm"><i class="far fa-edit"></i></a>
-                                            @if(App\Post::is_delete($post->id))
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm('Delete data?')"><i class="fas fa-eraser"></i></button>
-                                            @endif
-                                        </div>
-                                    {!! Form::close() !!}
-                                </div>
+            {{$posts->links()}}
+            @foreach($posts as $post)
+                <div class="card content-list bg-light">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <h5 class="card-title">
+                                    <a href="/dashboard/{{$post->id}}">
+                                        <img src="{{asset('storage/img/games/'.$post->game->id.'/'.$post->game->logo)}}" height="30" class="d-inline-block" alt="">
+                                        {{strip_tags($post->title)}}
+                                    </a>
+                                </h5>
                             </div>
-                            <hr>
-                            <small>Last update by {{$post->user->name}} at {{date("d M Y H:i:s",strtotime($post->updated_at))}}</small>
+                            <div class="col-sm-4 text-right">
+                                <!-- users can only manipulate the data they created -->
+                                <!-- if(!Auth::guest() && Auth::user()->id == $carousel->user_id) -->
+                                {!! Form::open(['action' => ['DashboardController@destroy', $post->id],'method' => 'POST']) !!}
+                                    @method('DELETE')
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <a title="View" href="/dashboard/{{$post->id}}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
+                                        <a title="Update" href="/dashboard/{{$post->id}}/edit" class="btn btn-secondary btn-sm"><i class="far fa-edit"></i></a>
+                                        @if(App\Post::is_delete($post->id))
+                                            <button type="submit" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm('Delete data?')"><i class="fas fa-eraser"></i></button>
+                                        @endif
+                                    </div>
+                                {!! Form::close() !!}
+                            </div>
                         </div>
+                        <hr>
+                        <small>Last update by {{$post->user->name}} at {{date("d M Y H:i:s",strtotime($post->updated_at))}}</small>
                     </div>
-                @endforeach
-                {{$posts->links()}}
-            @endif
+                </div>
+            @endforeach
+            {{$posts->links()}}
+        @endif
 
     </div>
 </div>
