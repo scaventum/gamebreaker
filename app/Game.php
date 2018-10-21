@@ -13,15 +13,18 @@ class Game extends Model
     public static function is_delete($id){
         $result=true;
 
-        // $carousel_active = Carousel::where([
-        //     'activity' => 1, 
-        //     'id' => $id
-        // ])->get();
+        $game_active = Post::where([
+            'game_id' => $id
+        ])->get();
         
-        // if(count($carousel_active)>0){
-        //     $result=false;
-        // }
+        if(count($game_active)>0){
+            $result=false;
+        }
 
         return $result;
+    }
+
+    public function posts(){
+        return $this->hasMany('App\Post');
     }
 }

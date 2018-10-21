@@ -21,7 +21,7 @@
             <div class="card content-list bg-light">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 mb-3">
                             <img src="{{asset('storage/img/carousels/'.$carousel->img)}}" class="img-fluid img-thumbnail">
                         </div>
                         <div class="col-sm-8">

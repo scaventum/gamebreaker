@@ -40,4 +40,6 @@ Route::resource('carousels','CarouselsController');
 
 Route::resource('games','GamesController');
 
+Route::resource('dashboard','DashboardController');
+
 Auth::routes();
