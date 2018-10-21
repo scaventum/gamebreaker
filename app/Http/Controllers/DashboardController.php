@@ -50,7 +50,7 @@ class DashboardController extends Controller
     public function create(Request $request)
     {
         $games = Game::orderBy("name","asc")->pluck('name', 'id')->toArray();
-        $request->user()->authorizeRoles(['ADMIN']);
+
         $data = array(
             "title" => "Posts - Create",
             "header" => "Posts - Create",
@@ -69,7 +69,6 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        $request->user()->authorizeRoles(['ADMIN']);
         $this->validate($request, [
             "title" => "required",
             "description" => "required",
@@ -128,7 +127,6 @@ class DashboardController extends Controller
      */
     public function edit(Request $request, $id)
     {
-        $request->user()->authorizeRoles(['ADMIN']);
         $post = Post::find($id);
 
         if(!$post || $post->user_id != auth()->user()->id) return redirect('/dashboard')->with('error','Request is invalid.');
@@ -154,7 +152,6 @@ class DashboardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->user()->authorizeRoles(['ADMIN']);
         $post = Post::find($id);
         if(!$post || $post->user_id != auth()->user()->id) return redirect('/dashboard')->with('error','Request is invalid.');
 
@@ -195,7 +192,6 @@ class DashboardController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        $request->user()->authorizeRoles(['ADMIN']);
         $transaction=true;
 
         $post = Post::find($id);
