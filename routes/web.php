@@ -22,6 +22,7 @@ Route::get('/', function () {
 */
 
 Route::get('/', 'PagesController@index');
+Route::post('/', 'PagesController@index');
 Route::get('/games-page', 'PagesController@games');
 Route::get('/about', 'PagesController@about');
 

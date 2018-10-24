@@ -10,16 +10,37 @@ use App\Configuration;
 
 class PagesController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
+        $keyword = '';
+        $game_id = array();
+
         $carousels =  Carousel::orderBy('position','asc')->where('activity',1)->get();
-        $posts =  Post::orderBy('updated_at','asc')->paginate(8);
+        $games =  Game::orderBy('name','asc')->where('activity',1)->get();
+        $posts =  Post::orderBy('updated_at','asc');
+
+        if ($request->isMethod('post')) {
+            $keyword = $request["keyword"];
+            $game_id = $request["game_id"];
+            $posts =  $posts->where('title','like','%'.$request['keyword'].'%');
+            
+            if($game_id!=Null) $posts->whereIn('game_id', $game_id);
+           
+        }
+
+        $posts = $posts->paginate(8);
+
         $data = array(
             "title" => "Home",
             "posts" => $posts,
+            "games" => $games,
             "carousel" => array(
                 "interval" => 3000,
                 "carousel_items" => $carousels
-            )
+            ),
+            "filter" => array(
+                "keyword" => $keyword,
+                "game_id" => $game_id
+            ),
         );
         return view("pages.index")->with($data);
     }

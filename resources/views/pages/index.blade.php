@@ -55,6 +55,8 @@
                                 </div>
                             </div>
                         @endforeach
+                    @else
+                        <h5>No post found ...</h5>
                     @endif
                     </div>
                     <div class="row">
@@ -63,6 +65,34 @@
                 </div>
                 <div class="col-lg-3 p-1">
                     <div class="post-filter">
+                        {!! Form::open(['action' => ['PagesController@index'],'method' => 'POST', 'files' => true]) !!}
+                            <div class="form-group">
+                                {{Form::text('keyword', $filter['keyword'], ['class' => 'form-control bg-dark text-light','placeholder' => 'Keyword'])}}
+                            </div>
+                            
+                            <div class="form-group">
+                                <ul class="list-group">
+                                    @foreach($games as $game)
+                                        <li class="list-group-item" style="background:linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url({{asset('storage/img/games/'.$game->id.'/'.$game->img)}}) center center no-repeat;background-size:cover;">
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <img src="{{asset('storage/img/games/'.$game->id.'/'.$game->logo)}}" class="d-inline-block img-fluid" alt="">
+                                                </div>
+                                                <div class="form-check col-sm-9">
+                                                    <input class="form-check-input" type="checkbox" name="game_id[]" value="{{$game->id}}"
+                                                    {{ (in_array($game->id,$filter['game_id'])?"checked":"") }}>
+                                                    <label class="form-check-label" for="defaultCheck1">
+                                                        {{$game->name}}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+
+                            <button id="sub_filter" type="submit" name="sub_filter" class="btn btn-danger btn-block"><i class="fas fa-search"></i> Filter</button>
+                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>

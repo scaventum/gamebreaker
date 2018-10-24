@@ -11,7 +11,7 @@
                             <div class="col-md-4 image" 
                             style="background:url({{asset('storage/img/games/'.$game->id.'/'.$game->img)}}) center center no-repeat;background-size:cover;">
                             </div>
-                            <div class="col-md-8 p-5 description">
+                            <div class="col-md-8 p-lg-5 p-3 description">
                                 <h3>
                                     <img src="{{asset('storage/img/games/'.$game->id.'/'.$game->logo)}}" height="30" class="d-inline-block" alt="">
                                     {!! $game->name !!}
