@@ -24,7 +24,7 @@ class PagesController extends Controller
             $posts =  $posts->where('title','like','%'.$request['keyword'].'%');
             
             if($game_id!=Null) $posts->whereIn('game_id', $game_id);
-           
+            else $game_id=array();
         }
 
         $posts = $posts->paginate(8);
