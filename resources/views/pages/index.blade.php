@@ -60,7 +60,9 @@
                     @endif
                     </div>
                     <div class="row">
-                        {{$posts->links()}}
+                        <div class="col-sm-12">
+                            {{$posts->links()}}
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-3 p-1">
@@ -75,10 +77,10 @@
                                     @foreach($games as $game)
                                         <li class="list-group-item" style="background:linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url({{asset('storage/img/games/'.$game->id.'/'.$game->img)}}) center center no-repeat;background-size:cover;">
                                             <div class="row">
-                                                <div class="col-sm-3">
+                                                <div class="col-lg-3 d-none d-lg-inline">
                                                     <img src="{{asset('storage/img/games/'.$game->id.'/'.$game->logo)}}" class="d-inline-block img-fluid" alt="">
                                                 </div>
-                                                <div class="form-check col-sm-9">
+                                                <div class="form-check col-lg-9 col-md-12">
                                                     <input class="form-check-input" type="checkbox" name="game_id[]" value="{{$game->id}}"
                                                     {{ (in_array($game->id,$filter['game_id'])?"checked":"") }}>
                                                     <label class="form-check-label" for="defaultCheck1">
@@ -91,7 +93,9 @@
                                 </ul>
                             </div>
 
-                            <button id="sub_filter" type="submit" name="sub_filter" class="btn btn-danger btn-block"><i class="fas fa-search"></i> Filter</button>
+                            <button id="sub_filter" type="submit" name="sub_filter" class="btn btn-danger btn-block">
+                                <i class="fas fa-search"></i> Filter
+                            </button>
                         {!! Form::close() !!}
                     </div>
                 </div>

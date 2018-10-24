@@ -21,10 +21,20 @@ class PagesController extends Controller
         if ($request->isMethod('post')) {
             $keyword = $request["keyword"];
             $game_id = $request["game_id"];
-            $posts =  $posts->where('title','like','%'.$request['keyword'].'%');
             
-            if($game_id!=Null) $posts->whereIn('game_id', $game_id);
-            else $game_id=array();
+            if($game_id==Null) $game_id=array();
+            $posts->whereIn('game_id', $game_id);
+
+            $posts = $posts->where(function($query) use ($request) {
+                $query
+                    ->where('title','like','%'.$request['keyword'].'%')
+                    ->orWhere('description','like','%'.$request['keyword'].'%')
+                    ->orWhereHas('user', function($query) use ($request) {
+                        $query->where('name','like','%'.$request['keyword'].'%');
+                    });
+            });
+        }else{
+            $game_id=Game::orderBy("name","asc")->pluck('id')->toArray();
         }
 
         $posts = $posts->paginate(8);
