@@ -16,7 +16,7 @@ class PagesController extends Controller
 
         $carousels =  Carousel::orderBy('position','asc')->where('activity',1)->get();
         $games =  Game::orderBy('name','asc')->where('activity',1)->get();
-        $posts =  Post::orderBy('updated_at','asc');
+        $posts =  Post::orderBy('updated_at','desc');
 
         if ($request->isMethod('post')) {
             $keyword = $request["keyword"];
