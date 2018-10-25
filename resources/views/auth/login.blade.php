@@ -56,9 +56,14 @@
 
             <div class="form-group row mb-0">
                 <div class="col-md-8 offset-md-4">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-sign-in-alt"></i> {{ __('Login') }}
-                    </button>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-sign-in-alt"></i> {{ __('Login') }}
+                        </button>
+                        <a role="button" href="{{ route('register') }}" class="btn btn-success">
+                            <i class="fas fa-user-plus"></i> {{ __('Register') }}
+                        </a>
+                    </div>
 
                     <a class="btn btn-link" href="{{ route('password.request') }}">
                         {{ __('Forgot Your Password?') }}

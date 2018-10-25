@@ -21,12 +21,7 @@
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Sign In') }}</a>
-                    </li>
-                    <li class="nav-item">
-                        @if (Route::has('register'))
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Sign Up') }}</a>
-                        @endif
+                        <a class="nav-link text-light" href="{{ route('login') }}">{{ __('Sign In') }} <i class="fas fa-sign-in-alt"></i></a>
                     </li>
                 @else
                     <li class="nav-item dropdown">
