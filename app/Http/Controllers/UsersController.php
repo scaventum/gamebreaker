@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Auth;
 use App\User;
 use App\Role;
 
@@ -41,6 +43,44 @@ class UsersController extends Controller
             "roles" => $roles
         );
         return view('users.index')->with($data);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function profile(Request $request)
+    {   
+        
+        $user = Auth::user();
+
+        if ($request->isMethod('put')) {
+            $this->validate($request, [
+                "name" => "required",
+                "avatar" => "image|max:1999|nullable"
+            ]);
+
+            if($request->hasFile('avatar')){
+                $filenameFinal = $user->id.".png";
+                Storage::delete('public/img/avatars/'.$user->id.".png");
+                $path = $request->file("avatar")->storeAs("public/img/avatars",$filenameFinal);
+            }
+
+            $user->name = $request->input('name');
+            $user->save();
+            return redirect('/profile')->with('success','Profile is successfully updated.');
+        }
+
+
+        $data = array(
+            "title" => "Profile",
+            "header" => "Profile",
+            "head_icon" => $this->head_icon,
+            "subheader" => "Maintain users profile",
+            "user" => $user
+        );
+        return view('users.profile')->with($data);
     }
 
     // Display a listing of the users from ajax.

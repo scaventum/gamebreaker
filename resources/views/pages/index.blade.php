@@ -51,7 +51,10 @@
                                         <img src="{{asset('storage/img/games/'.$post->game->id.'/'.$post->game->logo)}}" height="30" class="d-inline-block" alt="">
                                         {{$post->title}}
                                     </h5>
-                                    <small>By {{$post->user->name}} at {{date("d M Y H:i",strtotime($post->updated_at))}}</small>
+                                    <small class="text-secondary">
+                                        <div class="avatar-15" style="background:url({{asset('storage/img/avatars/'.$post->user->id.'.png')}}) center center no-repeat;background-size:cover;"></div> 
+                                        {{$post->user->name}} at {{date("d M Y H:i",strtotime($post->updated_at))}}
+                                    </small>
                                 </div>
                             </div>
                         @endforeach

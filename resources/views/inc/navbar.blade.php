@@ -25,14 +25,15 @@
                     </li>
                 @else
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="avatar-24 mx-1" 
+                            style="background:url({{asset('storage/img/avatars/'.Auth::user()->id.'.png')}}) center center no-repeat;background-size:cover;">
+                            </div>
                             {{ Auth::user()->name }}
+                            
                         </a>
-                        <!-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                        </a> -->
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#"><i class="far fa-id-card"></i> Profile</a>
+                            <a class="dropdown-item" href="/profile"><i class="far fa-id-card"></i> Profile</a>
                             <a class="dropdown-item" href="/dashboard"><i class="fas fa-desktop"></i> Dashboard</a>
                             <div class="dropdown-divider"></div>
                             @if( Auth::user()->hasrole('ADMIN') )
