@@ -26,10 +26,10 @@
                 @else
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <div class="avatar-24 mx-1" 
+                            {{ Auth::user()->name }}
+                            <div class="avatar-24 float-right ml-2"
                             style="background:url({{asset('storage/img/avatars/'.Auth::user()->id.'.png')}}) center center no-repeat;background-size:cover;">
                             </div>
-                            {{ Auth::user()->name }}
                             
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 use Auth;
 use App\User;
 use App\Role;
@@ -45,11 +46,7 @@ class UsersController extends Controller
         return view('users.index')->with($data);
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //update login user profile
     public function profile(Request $request)
     {   
         
@@ -76,11 +73,48 @@ class UsersController extends Controller
         $data = array(
             "title" => "Profile",
             "header" => "Profile",
-            "head_icon" => $this->head_icon,
+            "head_icon" => '<i class="far fa-id-card"></i>',
             "subheader" => "Maintain users profile",
             "user" => $user
         );
         return view('users.profile')->with($data);
+    }
+
+    //update login user profile
+    public function password(Request $request)
+    {   
+        $user = Auth::user();
+
+        if ($request->isMethod('put')) {
+            $data = $request->validate([
+                'current_password' => 'required|string',
+                'new_password' => 'required|string|min:6|different:current_password',
+                'confirm_new_password' => 'required|string|same:new_password',
+            ]);
+
+            $transaction=true;
+
+            if (Hash::check($request["current_password"], Auth::user()->password)==false) {
+                $transaction=false;
+                return redirect('profile/password')->with('error', 'Current password does not match database.');
+            }
+
+            if($transaction){
+                $user->password = Hash::make($request->input('new_password'));;
+                $user->save();
+                return redirect('profile/password')->with('success', 'Successfully changed password.');
+            }
+        }
+
+
+        $data = array(
+            "title" => "Change Password",
+            "header" => "Change Password",
+            "head_icon" => '<i class="fas fa-sync-alt"></i>',
+            "subheader" => "Change user password",
+            "user" => $user
+        );
+        return view('users.password')->with($data);
     }
 
     // Display a listing of the users from ajax.

@@ -4,10 +4,10 @@
     <div class="container" data-aos="fade-down">
         <div class="page-header-admin">
             <div class="row">
-                <div class="col-sm-8">
+                <div class="col-8">
                     <div class="page-header-admin-title" title="{{$subheader}}">{!!$head_icon!!} {{$header}}</div>
                 </div>
-                <div class="col-sm-4 text-right">
+                <div class="col-4 text-right">
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <a href="/games/create" class="btn btn-outline-light" title="Create"><i class="fas fa-plus"></i></a>
                     </div>

@@ -29,6 +29,9 @@ Route::get('/about', 'PagesController@about');
 Route::get('/profile', 'UsersController@profile');
 Route::put('/profile', 'UsersController@profile');
 
+Route::get('/profile/password', 'UsersController@password');
+Route::put('/profile/password', 'UsersController@password');
+
 Route::get('/dashboard', 'DashboardController@index');
 
 Route::get('/configuration', 'ConfigurationController@index');

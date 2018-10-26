@@ -52,7 +52,7 @@
                                         {{$post->title}}
                                     </h5>
                                     <small class="text-secondary">
-                                        <div class="avatar-15" style="background:url({{asset('storage/img/avatars/'.$post->user->id.'.png')}}) center center no-repeat;background-size:cover;"></div> 
+                                        <div class="avatar-15 float-left" style="background:url({{asset('storage/img/avatars/'.$post->user->id.'.png')}}) center center no-repeat;background-size:cover;"></div> 
                                         {{$post->user->name}} at {{date("d M Y H:i",strtotime($post->updated_at))}}
                                     </small>
                                 </div>
