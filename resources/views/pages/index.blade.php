@@ -47,10 +47,19 @@
                                     </video>
                                 </div>
                                 <div class="post-content">
-                                    <h5>
-                                        <img src="{{asset('storage/img/games/'.$post->game->id.'/'.$post->game->logo)}}" height="30" class="d-inline-block" alt="">
-                                        {{$post->title}}
-                                    </h5>
+                                    <div class="row">
+                                        <div class="col-sm-10">
+                                            <h5>
+                                                <img src="{{asset('storage/img/games/'.$post->game->id.'/'.$post->game->logo)}}" height="30" class="d-inline-block" alt="">
+                                                {{$post->title}}
+                                            </h5>
+                                        </div>
+                                        <div class="col-sm-2 text-right text-secondary">
+                                            {{$post->get_like($post->id)}}
+                                            <i class=" 
+                                            {{($post->is_user_like($post->id,Auth::user()->id)?'post-liked text-light fas fa-thumbs-up':'post-like far fa-thumbs-up')}}" data-id ="{{$post->id}}"></i>
+                                        </div>
+                                    </div>
                                     <small class="text-secondary">
                                         <div class="avatar-15 float-left" style="background:url({{asset('storage/img/avatars/'.$post->user->id.'.png')}}) center center no-repeat;background-size:cover;"></div> 
                                         {{$post->user->name}} at {{date("d M Y H:i",strtotime($post->updated_at))}}

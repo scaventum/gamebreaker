@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
 $body-bg: #333;
-$white: #fff;
+$white: #f8f9fa;
 $light-grey: #ccc;
 $grey: #999;
 $dark-grey: #222;
@@ -95,8 +95,15 @@ section{
     .container{
         color: $white;
         .post-content{
-            background: linear-gradient($dark, $dark-grey 20%, $dark 40%);
+            /*background: linear-gradient($dark, $dark-grey 20%, $dark 40%);*/
             padding: $padding;
+            .post-like{
+                cursor: pointer;
+            }.post-like:hover{
+                color: $white;
+            }.post-liked{
+                color: $white;
+            }
         }
 
         .post-filter{

@@ -24,7 +24,7 @@ nav .dropdown-menu i {
 .avatar-24 {
   height: 24px;
   width: 24px;
-  border: 1px solid #fff;
+  border: 1px solid #f8f9fa;
   border-radius: 5px;
 }
 
@@ -56,7 +56,7 @@ section {
 }
 
 .page-header {
-  color: #fff;
+  color: #f8f9fa;
   text-shadow: #000 0 0 10px, #000 0 0 10px;
 }
 
@@ -83,13 +83,24 @@ section {
 }
 
 .content .container {
-  color: #fff;
+  color: #f8f9fa;
 }
 
 .content .container .post-content {
-  background: -webkit-gradient(linear, left top, left bottom, from(#111), color-stop(20%, #222), color-stop(40%, #111));
-  background: linear-gradient(#111, #222 20%, #111 40%);
+  /*background: linear-gradient($dark, $dark-grey 20%, $dark 40%);*/
   padding: 10px;
+}
+
+.content .container .post-content .post-like {
+  cursor: pointer;
+}
+
+.content .container .post-content .post-like:hover {
+  color: #f8f9fa;
+}
+
+.content .container .post-content .post-liked {
+  color: #f8f9fa;
 }
 
 .content .container .post-filter {
@@ -103,7 +114,7 @@ section {
   width: 100%;
   height: auto;
   margin: 0 0 20px 0;
-  color: #fff;
+  color: #f8f9fa;
 }
 
 .page-content-list .image {
@@ -123,7 +134,7 @@ section {
   width: 100%;
   height: auto;
   padding: 10px 10px 10px 10px;
-  background-color: #fff;
+  background-color: #f8f9fa;
   color: #333;
   border-radius: 0 0 10px 10px;
 }
@@ -171,7 +182,7 @@ section {
 
 .sortable_connected li {
   font-family: "Russo One", sans-serif;
-  color: #fff;
+  color: #f8f9fa;
   cursor: pointer;
   text-shadow: #000 0 0 10px, #000 0 0 10px;
 }
