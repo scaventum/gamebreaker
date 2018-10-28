@@ -55,6 +55,19 @@ class PagesController extends Controller
         return view("pages.index")->with($data);
     }
 
+    public function like_post(Request $request){
+
+        $this->middleware('auth');
+        $request->user()->authorizeRoles(['ADMIN']);
+
+        if ($request->isMethod('post')) {
+            Post::like_post($request);
+            return response()->json(['success'=>'']);
+        }
+                
+        return response()->json(['error'=>'Request is invalid.']);
+    }
+
     public function games(){
         $games =  Game::orderBy('name','asc')->where('activity',1)->get();
         $data = array(

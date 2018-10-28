@@ -26,7 +26,6 @@
                 var role_id = $(this).val();
                 if(confirm("Change role of user #"+id+"?"))
                 {
-                    $("#loading").show();
                     $.ajax({
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -47,7 +46,6 @@
                             }
                         }
                     });
-                    $("#loading").hide(); 
                 }
             });
 

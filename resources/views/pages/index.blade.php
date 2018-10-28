@@ -55,9 +55,9 @@
                                             </h5>
                                         </div>
                                         <div class="col-sm-2 text-right text-secondary">
-                                            {{$post->get_like($post->id)}}
+                                            <span class="post-like-count">{{$post->get_like($post->id)}}</span>
                                             <i class=" 
-                                            {{($post->is_user_like($post->id,Auth::user()->id)?'post-liked text-light fas fa-thumbs-up':'post-like far fa-thumbs-up')}}" data-id ="{{$post->id}}"></i>
+                                            {{(!Auth::guest() && $post->is_user_like($post->id,Auth::user()->id)?'post-liked text-light fas fa-thumbs-up':'post-like far fa-thumbs-up')}}" data-id ="{{$post->id}}"></i>
                                         </div>
                                     </div>
                                     <small class="text-secondary">
@@ -117,6 +117,60 @@
 
     <script>
     $(document).ready(function(){
+
+        $('.post-content').on('click', '.post-like', function(e) {
+            var _this = $(this);
+            var post_id = $(this).attr('data-id');
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "POST",
+                url: "/like-post",
+                data:{
+                    post_id:post_id,
+                    action:"like"
+                },
+
+                success: function(response) {
+                    if($.isEmptyObject(response.error)){
+                        _this.removeClass();
+                        _this.addClass("post-liked text-light fas fa-thumbs-up");
+                        post_like_count = parseInt(_this.parent().find(".post-like-count").html());
+                        _this.parent().find(".post-like-count").html(post_like_count+1);
+                    }else{
+                        alert(response.error);
+                    }
+                }
+            }); 
+        });
+
+        $('.post-content').on('click', '.post-liked', function(e) {
+            var _this = $(this);
+            var post_id = $(this).attr('data-id');
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "POST",
+                url: "/like-post",
+                data:{
+                    post_id:post_id,
+                    action:"unlike"
+                },
+
+                success: function(response) {
+                    if($.isEmptyObject(response.error)){
+                        _this.removeClass();
+                        _this.addClass("post-like far fa-thumbs-up");
+                        post_like_count = parseInt(_this.parent().find(".post-like-count").html());
+                        _this.parent().find(".post-like-count").html(post_like_count-1);
+                    }else{
+                        alert(response.error);
+                    }
+                }
+            }); 
+        });
 
         $('.carousel').carousel({
             interval: {{$carousel['interval']}}

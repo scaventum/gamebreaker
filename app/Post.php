@@ -37,4 +37,26 @@ class Post extends Model
 
         return $result;
     }
+
+    public static function like_post($request){
+        DB::beginTransaction();
+
+        DB::table('post_like')
+            ->where('post_id', $request["post_id"])
+            ->where('user_id', Auth::user()->id)
+            ->delete();
+
+        if ($request["action"]=="like") {
+            DB::table('post_like')->insert([
+                [
+                    'post_id' => $request["post_id"], 
+                    'user_id' => Auth::user()->id,
+                    'created_at' => date("Y-m-d H:i:s"),
+                    'updated_at' => date("Y-m-d H:i:s"),
+                ]
+            ]);
+        }
+
+        DB::commit();
+    }
 }

@@ -23,6 +23,7 @@ Route::get('/', function () {
 
 Route::get('/', 'PagesController@index');
 Route::post('/', 'PagesController@index');
+Route::post('/like-post', 'PagesController@like_post');
 Route::get('/games-page', 'PagesController@games');
 Route::get('/about', 'PagesController@about');
 
