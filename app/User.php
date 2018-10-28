@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\CanResetPassword;
+use DB;
 
 class User extends Authenticatable
 {
@@ -61,6 +62,25 @@ class User extends Authenticatable
     public function hasRole($role)
     {
         return null !== $this->roles()->where('name', $role)->first();
+    }
+
+    public static function get_total_post($user_id){
+        $result = DB::table('posts')
+            ->where('user_id', $user_id)
+            ->count();
+
+        return $result;
+    }
+    
+    public static function get_like_received($user_id){
+        $result = DB::table('post_like')
+            ->join('posts', function ($join) {
+                $join->on('posts.id', '=', 'post_like.post_id');
+            })
+            ->where('posts.user_id', $user_id)
+            ->count();
+
+        return $result;
     }
 
     public function carousels(){

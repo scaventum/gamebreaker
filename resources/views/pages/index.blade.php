@@ -89,15 +89,15 @@
                                     @foreach($games as $game)
                                         <li class="list-group-item" style="background:linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url({{asset('storage/img/games/'.$game->id.'/'.$game->img)}}) center center no-repeat;background-size:cover;">
                                             <div class="row">
-                                                <div class="col-lg-3 d-none d-lg-inline">
-                                                    <img src="{{asset('storage/img/games/'.$game->id.'/'.$game->logo)}}" class="d-inline-block img-fluid" alt="">
-                                                </div>
                                                 <div class="form-check col-lg-9 col-md-12">
                                                     <input class="form-check-input" type="checkbox" name="game_id[]" value="{{$game->id}}"
                                                     {{ (in_array($game->id,$filter['game_id'])?"checked":"") }}>
                                                     <label class="form-check-label" for="defaultCheck1">
                                                         {{$game->name}}
                                                     </label>
+                                                </div>
+                                                <div class="col-lg-3 d-none d-lg-inline">
+                                                    <img src="{{asset('storage/img/games/'.$game->id.'/'.$game->logo)}}" class="d-inline-block img-fluid" alt="">
                                                 </div>
                                             </div>
                                         </li>
@@ -118,59 +118,61 @@
     <script>
     $(document).ready(function(){
 
-        $('.post-content').on('click', '.post-like', function(e) {
-            var _this = $(this);
-            var post_id = $(this).attr('data-id');
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: "POST",
-                url: "/like-post",
-                data:{
-                    post_id:post_id,
-                    action:"like"
-                },
+        @if(!Auth::guest())
+            $('.post-content').on('click', '.post-like', function(e) {
+                var _this = $(this);
+                var post_id = $(this).attr('data-id');
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: "POST",
+                    url: "/like-post",
+                    data:{
+                        post_id:post_id,
+                        action:"like"
+                    },
 
-                success: function(response) {
-                    if($.isEmptyObject(response.error)){
-                        _this.removeClass();
-                        _this.addClass("post-liked text-light fas fa-thumbs-up");
-                        post_like_count = parseInt(_this.parent().find(".post-like-count").html());
-                        _this.parent().find(".post-like-count").html(post_like_count+1);
-                    }else{
-                        alert(response.error);
+                    success: function(response) {
+                        if($.isEmptyObject(response.error)){
+                            _this.removeClass();
+                            _this.addClass("post-liked text-light fas fa-thumbs-up");
+                            post_like_count = parseInt(_this.parent().find(".post-like-count").html());
+                            _this.parent().find(".post-like-count").html(post_like_count+1);
+                        }else{
+                            alert(response.error);
+                        }
                     }
-                }
-            }); 
-        });
+                }); 
+            });
 
-        $('.post-content').on('click', '.post-liked', function(e) {
-            var _this = $(this);
-            var post_id = $(this).attr('data-id');
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: "POST",
-                url: "/like-post",
-                data:{
-                    post_id:post_id,
-                    action:"unlike"
-                },
+            $('.post-content').on('click', '.post-liked', function(e) {
+                var _this = $(this);
+                var post_id = $(this).attr('data-id');
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: "POST",
+                    url: "/like-post",
+                    data:{
+                        post_id:post_id,
+                        action:"unlike"
+                    },
 
-                success: function(response) {
-                    if($.isEmptyObject(response.error)){
-                        _this.removeClass();
-                        _this.addClass("post-like far fa-thumbs-up");
-                        post_like_count = parseInt(_this.parent().find(".post-like-count").html());
-                        _this.parent().find(".post-like-count").html(post_like_count-1);
-                    }else{
-                        alert(response.error);
+                    success: function(response) {
+                        if($.isEmptyObject(response.error)){
+                            _this.removeClass();
+                            _this.addClass("post-like far fa-thumbs-up");
+                            post_like_count = parseInt(_this.parent().find(".post-like-count").html());
+                            _this.parent().find(".post-like-count").html(post_like_count-1);
+                        }else{
+                            alert(response.error);
+                        }
                     }
-                }
-            }); 
-        });
+                }); 
+            });
+        @endif
 
         $('.carousel').carousel({
             interval: {{$carousel['interval']}}

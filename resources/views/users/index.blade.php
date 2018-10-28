@@ -12,12 +12,13 @@
                 "ajax": "/users/select_users",
                 "columns": [
                     { "data": "id" },
+                    { "data": "avatar" },
                     { "data": "name" },
                     { "data": "email" },
                     { "data": "role" }
                 ],
                 "columnDefs": [
-                    { "orderable": false, "targets": 3 }
+                    { "orderable": false, "targets": [1, 3] }
                 ]
             });
 
@@ -74,6 +75,7 @@
                 <thead>
                     <tr>
                         <th>User ID</th>
+                        <th></th>
                         <th>Name</th>
                         <th>E-mail</th>
                         <th>Role</th>

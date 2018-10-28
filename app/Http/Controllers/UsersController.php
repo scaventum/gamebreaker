@@ -138,6 +138,9 @@ class UsersController extends Controller
                 $role = $value->roles[0]->name;
             }
             $value->role = $role;
+            $value->avatar = "<div class='avatar-24'
+            style='background:url(".asset("storage/img/avatars/".$value->id.".png").") center center no-repeat;background-size:cover;'>
+            </div>";
         }
 
         echo(json_encode(array("data"=>$users)));

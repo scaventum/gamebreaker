@@ -69,6 +69,8 @@
                                 {!! Form::close() !!}
                             </div>
                         </div>
+                        <small class="post-like-count">{{$post->get_like($post->id)}}</small>
+                        <i class="far fa-thumbs-up"></i>
                         <hr>
                         <small>Last update by {{$post->user->name}} at {{date("d M Y H:i:s",strtotime($post->updated_at))}}</small>
                     </div>

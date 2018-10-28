@@ -54,7 +54,7 @@ class DashboardController extends Controller
         $data = array(
             "title" => "Posts - Create",
             "header" => "Posts - Create",
-            "head_icon" => $this->head_icon,
+            "head_icon" => "<i class='fas fa-film'></i>",
             "subheader" => "Create posts content on Home page",
             "games" => $games
         );
@@ -135,7 +135,7 @@ class DashboardController extends Controller
         $data = array(
             "title" => "Posts - Update ".$post->id,
             "header" => "Posts - Update ".$post->id,
-            "head_icon" => $this->head_icon,
+            "head_icon" => "<i class='fas fa-film'></i>",
             "subheader" => "Update posts content on Home page",
             "post" => $post,
             "games" => $games

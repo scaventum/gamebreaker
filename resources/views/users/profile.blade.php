@@ -28,6 +28,12 @@
                     <div class="avatar-200 float-md-left mx-auto mb-3"
                     style="background:url({{asset('storage/img/avatars/'.$user->id.'.png')}}) center center no-repeat;background-size:cover;">
                     </div>
+                    <div class="clearfix"></div>
+                    <div class="float-md-left mx-auto mb-3 text-center">
+                        {{$user->get_total_post($user->id)}} <i class='fas fa-film'></i>
+                        &emsp;
+                        {{$user->get_like_received($user->id)}} <i class="far fa-thumbs-up"></i>
+                    </div>
                 </div>
             
                 <div class="col-md-8">
