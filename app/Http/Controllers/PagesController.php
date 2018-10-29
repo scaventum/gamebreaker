@@ -58,7 +58,6 @@ class PagesController extends Controller
     public function like_post(Request $request){
 
         $this->middleware('auth');
-        $request->user()->authorizeRoles(['ADMIN']);
 
         if ($request->isMethod('post')) {
             Post::like_post($request);
