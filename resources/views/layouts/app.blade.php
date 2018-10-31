@@ -39,39 +39,36 @@
 
     <!-- DataTables JS -->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-    
-    <!-- React JS -->
-    <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
 
     <!-- Custom JS -->
     <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
 
 </head>
 <body>
-    @include('inc.navbar')
-    @include('inc.messages')
-    <div class="content-wrapper">
-        @yield('content')
+    <div id="app">
+        @include('inc.navbar')
+        @include('inc.messages')
+        <div class="content-wrapper">
+            @yield('content')
+        </div>
+        @include('inc.footer')
+
+        <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+        <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
+        <script>
+            $(document).ready(function() {
+                AOS.init();
+
+                $('footer').find(".brand").click(function(){
+                    $('html, body').animate({ scrollTop: 0 }, 600);
+                    return false;
+                });
+                
+                $('.html-editor').ckeditor(function(config){
+                    config.height = 10; 
+                });
+            });
+        </script>
     </div>
-    @include('inc.footer')
-
-    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
-    <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
-    <script>
-        $(document).ready(function() {
-            AOS.init();
-
-            $('footer').find(".brand").click(function(){
-                $('html, body').animate({ scrollTop: 0 }, 600);
-                return false;
-            });
-            
-            $('.html-editor').ckeditor(function(config){
-                config.height = 10; 
-            });
-        });
-    </script>
-
 </body>
 </html>
