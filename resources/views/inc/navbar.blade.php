@@ -9,7 +9,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item {{ Request::is('games') ? 'active' : '' }}">
+                <li class="nav-item {{ Request::is('games-page') ? 'active' : '' }}">
                     <a class="nav-link " href="/games-page">Games</a>
                 </li>
                 <li class="nav-item {{ Request::is('about') ? 'active' : '' }}">
