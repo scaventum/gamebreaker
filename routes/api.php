@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 
+use App\Game;
+use App\Http\Resources\Game as GameResource;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,4 +18,12 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+//List games
+Route::get('/games2','GamesController@index');
+
+Route::get('/games/{item_per_page?}', function ($item_per_page = 0) {
+    $games = Game::where('activity',1)->paginate($item_per_page);
+    return GameResource::collection($games);
 });
