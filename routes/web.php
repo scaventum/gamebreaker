@@ -11,16 +11,6 @@
 |
 */
 
-/* example
-Route::get('/users/{id}/{id2}', function ($id,$id2) {
-    return "This is user ".$id." in match ".$id2;
-});
-
-Route::get('/', function () {
-    return view('welcome');
-});
-*/
-
 Route::get('/', 'PagesController@index');
 Route::post('/', 'PagesController@index');
 Route::post('/like-post', 'PagesController@like_post');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Game;
+use App\Http\Resources\Game as GameResource;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -16,8 +17,12 @@ class GamesController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth',['except' => ['index','show']]);
-        $this->middleware('auth');
+        $this->middleware('auth',[
+            'except' => [
+                'api_list'
+            ]
+        ]);
+        //$this->middleware('auth');
         $this->head_icon = "<i class='fas fa-gamepad'></i>";
     }
 
@@ -232,5 +237,14 @@ class GamesController extends Controller
         $game->delete();
         
         return redirect('/games')->with('success','Game is successfully deleted.');
+    }
+
+    /* API */
+
+    //Return API games list
+    public function api_list($item_per_page = 0)
+    {
+        $games = Game::where('activity',1)->paginate($item_per_page);
+        return GameResource::collection($games);
     }
 }

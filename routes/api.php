@@ -21,9 +21,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //List games
-Route::get('/games2','GamesController@index');
-
-Route::get('/games/{item_per_page?}', function ($item_per_page = 0) {
-    $games = Game::where('activity',1)->paginate($item_per_page);
-    return GameResource::collection($games);
-});
+Route::get('games/{item_per_page?}', 'GamesController@api_list');
